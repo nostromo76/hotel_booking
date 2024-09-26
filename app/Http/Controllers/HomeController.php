@@ -12,16 +12,16 @@ class HomeController extends Controller
 
     public function rooms()
     {
-        return view('rooms'); // Create rooms.blade.php
+        return view('rooms');
     }
 
     public function reservation()
     {
-        return view('reservation'); // Create reservation.blade.php
+        return view('reservation'); 
     }
 
     public function admin()
     {
-        return view('admin'); // Create admin.blade.php
+        return view('admin'); 
     }
 }
