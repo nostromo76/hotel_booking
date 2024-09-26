@@ -1,0 +1,37 @@
+/* Navbar Styles */
+.navbar {
+    background-color: #343a40; /* Dark background for the navbar */
+}
+
+.navbar .nav > li > a {
+    color: #ffffff; /* White text for links */
+    padding: 15px 20px; /* Padding for links */
+    text-decoration: none; /* Remove underline from links */
+}
+
+.navbar .nav > li > a:hover {
+    background-color: #495057; /* Lighten background on hover */
+}
+
+.navbar .navbar-right a {
+    padding: 10px; /* Adjust padding for right navbar items */
+}
+
+.navbar img {
+    max-height: 25px; /* Limit image height for social icons */
+    margin: 0 10px; /* Space between icons */
+}
+
+/* Jumbotron Styles */
+.jumbotron {
+    background-color: #f8f9fa; /* Light background for jumbotron */
+    padding: 30px 20px; /* Padding for jumbotron */
+    margin-bottom: 20px; /* Space below jumbotron */
+}
+
+/* Responsive Image */
+.img-responsive {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+}
+
