@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     use HasFactory;
-
-    protected $table = 'rooms';
-
-    // relacije
+    protected $table = 'rooms'; 
+    protected $fillable = ['room_cat', 'checkin', 'checkout', 'name', 'phone', 'book'];
 }
