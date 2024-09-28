@@ -15,9 +15,9 @@ class HomeController extends Controller
         return view('rooms');
     }
 
-    public function reservation()
+    public function reservations()
     {
-        return view('reservation'); 
+        return view('reservations'); 
     }
 
     public function admin()
