@@ -12,4 +12,8 @@ Route::get('/admin', [HomeController::class, 'admin'])->name('admin');
 
 Route::get('/rooms', [RoomController::class, 'index'])->name('rooms');
 Route::get('/book/{id}', [RoomController::class, 'book'])->name('book');
-Route::get('/rooms/{id}', [RoomController::class, 'show'])->name('rooms.show');
+
+Route::get('/rooms/{room_id}', [RoomController::class, 'show'])->name('rooms.show');
+
+
+

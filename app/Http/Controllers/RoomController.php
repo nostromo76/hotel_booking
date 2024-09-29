@@ -9,18 +9,17 @@ class RoomController extends Controller
 {
     public function index()
     {
-        $rooms = Room::where('book', false)->get(); 
-        return view('rooms.index', compact('rooms'));
+        $rooms = Room::all(); // Retrieve all rooms
+        return view('rooms.index', compact('rooms')); // Pass them to the view
     }
     
 
+    public function show($room_id)
+{
+    $room = Room::where('room_id', $room_id)->firstOrFail(); // This will throw a 404 if not found
+    return view('rooms.show', compact('room'));
+}
 
-    public function show($id)
-    {
-        $room = Room::findOrFail($id); // Get the room by ID or fail
-        
-        return view('rooms.show', compact('room')); // Pass the correct variable
-    }
     
 }
 

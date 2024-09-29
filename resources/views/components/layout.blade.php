@@ -37,5 +37,5 @@
     <script src="{{ asset('js/slide.js') }}"></script>
 </body>
 
-{{$slot}}
+
 </html>

@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Page</title>
-</head>
-<body>
-    <h1>Test Page</h1>
-</body>
-</html>
+<x-layout/>
+
+
 @section('content')
 <div class="container">
     <h1>Available Rooms</h1>
@@ -22,15 +14,15 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="card-title">Room Category: {{ $room->room_cat }}</h5>
-                            <p class="card-text">Check-in: {{ $room->checkin }}</p>
-                            <p class="card-text">Check-out: {{ $room->checkout }}</p>
-                            <p class="card-text">Name: {{ $room->name }}</p>
-                            <p class="card-text">Phone: {{ $room->phone }}</p>
-                            <p class="card-text">Booked: {{ $room->book ? 'Yes' : 'No' }}</p>
-                            <a href="{{ route('book', $room->room_id) }}" class="btn btn-primary">Book Now</a>
+                            <p class="card-text">Check-in: {{ $room->checkin !== '0000-00-00' ? $room->checkin : 'Not set' }}</p>
+                            <p class="card-text">Check-out: {{ $room->checkout !== '0000-00-00' ? $room->checkout : 'Not set' }}</p>
+                            <p class="card-text">Name: {{ $room->name ?: 'Not provided' }}</p>
+                            <p class="card-text">Phone: {{ $room->phone ?: 'Not provided' }}</p>
+                            <p class="card-text">Booked: {{ $room->book === 'true' ? 'Yes' : 'No' }}</p>
+                            <a href="{{ route('rooms.show', $room->room_id) }}" class="btn btn-primary">View Details</a>
                         </div>
                     </div>
-                </div>
+                </div> 
             @endforeach
         </div>
     @endif
