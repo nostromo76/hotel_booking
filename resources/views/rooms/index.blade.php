@@ -37,7 +37,12 @@
                             <td class="px-6 py-4">{{ $room->book === 'true' ? 'Booked' : 'Available' }}</td>
                             <td class="px-6 py-4">
                                 @if($room->book === 'false')
-                                    <a href="{{ route('book', $room->room_id) }}" class="text-blue-600 hover:underline">Book Now</a>
+                                    <button 
+                                        class="text-blue-600 hover:underline" 
+                                        onclick="openModal({{ $room->room_id }})">
+                                        Book Now
+                                    </button>
+                                    <x-booking-modal :roomId="$room->room_id" />
                                 @else
                                     <span class="text-gray-500">N/A</span>
                                 @endif
@@ -48,5 +53,40 @@
             </table>
         </div>
     </div>
+     <!-- JavaScript code -->
+     <script>
+        function openModal(roomId) {
+            document.getElementById(`bookingModal${roomId}`).classList.remove('hidden');
+        }
+
+        function closeModal(roomId) {
+            document.getElementById(`bookingModal${roomId}`).classList.add('hidden');
+        }
+
+        document.addEventListener('submit', function(event) {
+            if (event.target.matches('[id^="bookingForm"]')) {
+                event.preventDefault();
+                const form = event.target;
+                const roomId = form.querySelector('input[name="room_id"]').value;
+
+                // Example AJAX request (using Fetch API)
+                fetch(`/book/${roomId}`, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        closeModal(roomId);
+                        location.reload(); // Refresh or update UI as needed
+                    } else {
+                        alert('Failed to book the room. Please try again.');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
