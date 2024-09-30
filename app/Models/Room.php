@@ -16,4 +16,9 @@ class Room extends Model
 
     // If you're using timestamps, you can set these properties
     public $timestamps = false; // Set to true if you want Laravel to manage created_at and updated_at
+
+
+    public function isBooked() {
+        return $this->book === 'false';
+    }
 }

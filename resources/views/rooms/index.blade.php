@@ -1,30 +1,35 @@
 <x-layout/>
 
 
-@section('content')
-<div class="container">
-    <h1>Available Rooms</h1>
 
-    @if($rooms->isEmpty())
-        <p>No rooms available at the moment.</p>
-    @else
-        <div class="row">
-            @foreach($rooms as $room)
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">Room Category: {{ $room->room_cat }}</h5>
-                            <p class="card-text">Check-in: {{ $room->checkin !== '0000-00-00' ? $room->checkin : 'Not set' }}</p>
-                            <p class="card-text">Check-out: {{ $room->checkout !== '0000-00-00' ? $room->checkout : 'Not set' }}</p>
-                            <p class="card-text">Name: {{ $room->name ?: 'Not provided' }}</p>
-                            <p class="card-text">Phone: {{ $room->phone ?: 'Not provided' }}</p>
-                            <p class="card-text">Booked: {{ $room->book === 'true' ? 'Yes' : 'No' }}</p>
-                            <a href="{{ route('rooms.show', $room->room_id) }}" class="btn btn-primary">View Details</a>
-                        </div>
-                    </div>
-                </div> 
-            @endforeach
-        </div>
-    @endif
-</div>
-@endsection
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rooms</title>
+</head>
+<body>
+    <h1>Rooms List</h1>
+    <table border="1">
+        <tr>
+            <th>Room ID</th>
+            <th>Room Category</th>
+            <th>Check-in Date</th>
+            <th>Check-out Date</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Booking Status</th>
+        </tr>
+        @foreach($rooms as $room)
+            <tr>
+                <td>{{ $room->room_id }}</td>
+                <td>{{ $room->room_cat }}</td>
+                <td>{{ $room->checkin === '0000-00-00' ? 'Not Set' : $room->checkin }}</td>
+                <td>{{ $room->checkout === '0000-00-00' ? 'Not Set' : $room->checkout }}</td>
+                <td>{{ $room->name ?: 'Not Provided' }}</td>
+                <td>{{ $room->phone ?: 'Not Provided' }}</td>
+                <td>{{ $room->book === 'true' ? 'Booked' : 'Available' }}</td>
+            </tr>
+        @endforeach
+    </table>
+</body>
+</html>
