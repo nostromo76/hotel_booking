@@ -12,7 +12,7 @@
                     <x-nav-bar-link href="{{ route('rooms') }}" :active="request()->is('rooms')">Rooms &amp; Facilities</x-nav-bar-link>
                 </li>
                 <li>
-                    <x-nav-bar-link href="reservation" :active="request()->is('reservation')">Book a room here</x-nav-bar-link>
+                    <x-nav-bar-link href="categories" :active="request()->is('categories')">Hot offer now</x-nav-bar-link>
                 </li>
                 <li>
                     <x-nav-bar-link href="admin" :active="request()->is('admin')">Admin</x-nav-bar-link>

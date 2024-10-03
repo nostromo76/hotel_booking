@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomCategoryController;
+use App\Http\Controllers\BookingController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/rooms', [RoomController::class, 'index'])->name('rooms');
@@ -15,6 +16,8 @@ Route::get('/rooms/{room_id}', [RoomController::class, 'show'])->name('rooms.sho
 
 Route::get('/categories', [RoomCategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/{roomname}', [RoomCategoryController::class, 'show'])->name('categories.show');
+Route::get('/book/{roomname}', [BookingController::class, 'show'])->name('book');
+
 
 
 

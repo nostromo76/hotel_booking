@@ -12,6 +12,7 @@ class RoomController extends Controller
     {
         $rooms = Room::all(); // Retrieve all rooms
         return view('rooms.index', compact('rooms')); // Pass them to the view
+        
     }
     
 

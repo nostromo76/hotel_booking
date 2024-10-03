@@ -11,9 +11,11 @@ class RoomCategoryController extends Controller
     public function index()
     {
         $categories = RoomCategory::all(); // Retrieve all room categories
-        dd($categories); // Dump the categories and stop execution
-        return view('reservations', compact('categories'));
-    }
+      
+        return view('reservations', compact('categories')); // Ensure you are passing 'categories'
+}
+
+    
 
     public function show($roomname)
     {
